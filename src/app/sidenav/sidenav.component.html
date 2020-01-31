@@ -1,14 +1,14 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav [mode]="push">
-        <button mat-button>
-            <mat-icon (click)="sidenav.toggle()">keyboard_arrow_left</mat-icon>
+    <mat-sidenav #sidenav mode="side">
+        <button mat-button (click)="sidenav.toggle()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
         <mat-list class="menu-list">
             <mat-list-item>
                 <a mat-button [routerLink]="['/']" class="menu-list-link" routerLinkActive="router-link-active" >Головна</a>
             </mat-list-item>
             <mat-list-item>
-                <a mat-button [routerLink]="['/']" class="menu-list-link" routerLinkActive="router-link-active" >Список фондів</a>
+                <a mat-button routerLink="fonds" class="menu-list-link" routerLinkActive="router-link-active" >Список фондів</a>
             </mat-list-item>
             <mat-list-item>
                 <a mat-button [routerLink]="['/']" class="menu-list-link" routerLinkActive="router-link-active" >Виставки</a>
@@ -17,5 +17,6 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <app-header (toggleSideNav)="sidenav.toggle()"></app-header>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
