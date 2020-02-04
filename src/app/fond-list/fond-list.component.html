@@ -1,7 +1,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Фонди</h1>
   <mat-grid-list cols="3" rowHeight="200px">
-    <mat-grid-tile *ngFor="let card of cards" colspan="1" rowspan="1">
+    <mat-grid-tile *ngFor="let card of cardForShow" colspan="1" rowspan="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
@@ -18,14 +18,16 @@
         <mat-card-content class="dashboard-card-content">
           <div>Номер фонду {{card.fondNumber}}</div>
           <div>Кількість спав фонду {{card.caseQuantity}}</div>
-          <button mat-button class="watch-more-button">Дивитися повністю</button>
+          <button mat-button class="watch-more-button"  routerLink="{{card.id}}/cases" routerLinkActive="router-link-active">Дивитися повністю</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-paginator [length]="cardsLength"
+  <mat-paginator #paginator
+              [length] = "length"
               [pageSize]="pageSize"
               [pageIndex]="pageIndex"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+              [pageSizeOptions]="[6, 12, 24, 100]"
+              (page)="pageEvent = togglePage($event)">
   </mat-paginator>
 </div>

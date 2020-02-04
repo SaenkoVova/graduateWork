@@ -8,7 +8,7 @@ export class FondsService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getFonds(pageSize, pageIndex) {
-    return this.afs.collection(`fonds`, ref => ref.limit(pageSize)).snapshotChanges();
+  getFonds() {
+    return this.afs.collection(`fonds`, ref => ref.orderBy(`fondNumber`)).snapshotChanges();
   }
 }

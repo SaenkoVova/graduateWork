@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgProgressModule } from 'ngx-progressbar'
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -23,13 +24,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatPaginatorIntlCro } from './share/paginatorConfig';
+import { CaseListComponent } from './case-list/case-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidenavComponent,
-    FondListComponent
+    FondListComponent,
+    CaseListComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { MatPaginatorIntlCro } from './share/paginatorConfig';
     MatMenuModule,
     LayoutModule,
     MatPaginatorModule,
+    NgProgressModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [

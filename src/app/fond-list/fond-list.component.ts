@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FondsService } from '../services/fonds.service';
+import { PageEvent } from '@angular/material/paginator';
+import { NgprogressService } from '../services/ngprogress.service';
 
 @Component({
   selector: 'app-fond-list',
@@ -8,34 +10,41 @@ import { FondsService } from '../services/fonds.service';
 })
 export class FondListComponent implements OnInit {
   cards = [];
-  cardsLength;
-  pageSize = 5;
-  pageIndex;
+  cardForShow = [];
+  pageEvent: PageEvent;
+  pageIndex = 0;
+  pageSize = 6;
+  length = 0;
 
   constructor(
-    private fondService: FondsService
+    private fondService: FondsService,
+    private ngProgressService: NgprogressService
   ) {}
 
   ngOnInit() {
     this.getCards()
-      .then((...cards) => {
-        this.cardsLength = cards.length;
+      .then(() => {
+        this.length = this.cards.length;
+        this.cardForShow = this.cards.slice(0, this.pageSize);
+        this.ngProgressService.ngProgressComplete();
       })
-      console.log(this.pageIndex)
   }
   
   getCards() {
     return new Promise((resolve, reject) => {
-      this.fondService.getFonds(this.pageSize, this.pageIndex).subscribe(actionArray => {
+      this.ngProgressService.ngProgressStart();
+      this.fondService.getFonds().subscribe(actionArray => {
         this.cards = actionArray.map(item => {
           return {
             id: item.payload.doc.id,
             ...(item.payload.doc.data() as Object)
           } as Object;
         });
-      
+      resolve();
       });
-      resolve(this.cards);
     });
+  }
+  togglePage(event) {
+    this.cardForShow = this.cards.slice(event.pageIndex * event.pageSize, (event.pageIndex * event.pageSize) + event.pageSize);
   }
 }
