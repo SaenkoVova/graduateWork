@@ -1,0 +1,13 @@
+<div class="example-container">
+  <h1 class="mat-h1">Реєстрація</h1>
+  <mat-form-field class="mat-form-field">
+    <input matInput placeholder="Вкажіть ваш email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field">
+    <input matInput placeholder="Вкажіть ваш пароль" type="password" [formControl]="password" required>
+    <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button (click)="signUp(email, password)" [disabled]="email.invalid || password.invalid"
+  >Зареєструватися</button>
+</div>

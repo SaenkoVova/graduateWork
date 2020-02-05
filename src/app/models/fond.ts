@@ -1,5 +1,5 @@
 export class Fond {
-    title: string
-    fondNumber: number
-    caseQuantity: number
+    title: string;
+    fondNumber: number;
+    caseQuantity: number;
 }

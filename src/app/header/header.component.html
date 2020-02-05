@@ -8,24 +8,15 @@
     <span class="example-fill-remaining-space"></span>
 
     <mat-list class="list-horizontal">
-        <mat-list-item>
-            <a mat-button>
-                <span>Увійти</span>
-                <mat-icon>lock</mat-icon>
+        <mat-list-item *ngFor="let item of nav">
+            <a mat-button routerLink="{{item.path}}">
+                <span>{{item.title}}</span>
+                <mat-icon>{{item.icon}}</mat-icon>
             </a>
-        </mat-list-item>
-        <mat-list-item>
-            <a mat-button>
-                <span>Зареєструватися</span>
-                <mat-icon>account_circle</mat-icon>
-            </a>
-        </mat-list-item>
-        <mat-list-item>
-            <button mat-button>
-                <span>Вийти</span>
-                <mat-icon>exit_to_app</mat-icon>
-            </button>
         </mat-list-item>
     </mat-list>
-    
+    <button mat-button *ngIf="user && user.authenticate">
+      <span>Вийти</span>
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
 </mat-toolbar>

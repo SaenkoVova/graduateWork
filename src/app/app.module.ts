@@ -25,6 +25,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatPaginatorIntlCro } from './share/paginatorConfig';
 import { CaseListComponent } from './case-list/case-list.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { CaseListComponent } from './case-list/case-list.component';
     HeaderComponent,
     SidenavComponent,
     FondListComponent,
-    CaseListComponent
+    CaseListComponent,
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,9 @@ import { CaseListComponent } from './case-list/case-list.component';
     MatPaginatorModule,
     NgProgressModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [
     AngularFireModule,

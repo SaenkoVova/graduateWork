@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { CaseService } from '../services/case.service';
 import { NgprogressService } from '../services/ngprogress.service';
+import {Case} from '../models/case';
 
 @Component({
   selector: 'app-case-list',
@@ -18,33 +19,35 @@ export class CaseListComponent implements OnInit {
   endAt = this.pageSize;
 
   constructor(
-    private caseSerivice:CaseService,
+    private caseService: CaseService,
     private ngProgressService: NgprogressService
   ) { }
 
   ngOnInit() {
     this.getCards(this.pageSize, this.startAt, this.endAt)
-      .then(() =>{
+      .then(() => {
         this.ngProgressService.ngProgressComplete();
-      })
+      });
   }
   getCards(pageSize, startAt, endAt) {
     return new Promise((resolve, reject) => {
       this.ngProgressService.ngProgressStart();
-      this.caseSerivice.getCases(pageSize, startAt, endAt).subscribe(actionArray => {
+      this.caseService.getCases(pageSize, startAt, endAt).subscribe(actionArray => {
         this.cards = actionArray.map(item => {
           return {
             id: item.payload.doc.id,
-            ...(item.payload.doc.data() as Object)
-          } as Object;
+            ...(item.payload.doc.data() as Case)
+          } as Case;
         });
-      resolve();
+        resolve();
       });
     });
   }
   togglePage(event) {
     this.startAt = event.pageIndex * event.pageSize + 1;
     this.endAt = (event.pageIndex * event.pageSize) + event.pageSize;
-    this.getCards(event.pageSize, this.startAt, this.endAt);
+    this.getCards(event.pageSize, this.startAt, this.endAt).then(r => {
+      this.ngProgressService.ngProgressComplete();
+    });
   }
 }
