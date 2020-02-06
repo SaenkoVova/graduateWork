@@ -29,7 +29,6 @@ export class SignupComponent implements OnInit {
         '';
   }
   signUp(email, password) {
-    console.log(email, password);
-    this.userService.signUp();
+    this.userService.signUp(email, password);
   }
 }

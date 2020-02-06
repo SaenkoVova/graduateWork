@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgProgressModule } from 'ngx-progressbar'
+import { NgProgressModule } from 'ngx-progressbar';
 
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore } from '@angular/fire/firestore'
-//IMPORTS FOR ANGULAR MATERIAL
+import { AngularFireModule } from '@angular/fire/firebase.app.module';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -29,6 +29,9 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
+
+import * as firebase from 'firebase';
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -55,7 +58,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     LayoutModule,
     MatPaginatorModule,
     NgProgressModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule
