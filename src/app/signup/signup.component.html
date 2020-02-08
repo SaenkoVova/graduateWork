@@ -8,6 +8,7 @@
     <input matInput placeholder="Вкажіть ваш пароль" type="password" [formControl]="password" required>
     <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
   </mat-form-field>
+  <mat-card *ngIf="error.message" class="error">{{error.message}}</mat-card>
   <button mat-raised-button (click)="signUp(email.value, password.value)" [disabled]="email.invalid || password.invalid"
   >Зареєструватися</button>
 </div>

@@ -7,7 +7,7 @@
 
     <span class="example-fill-remaining-space"></span>
 
-    <mat-list class="list-horizontal">
+    <mat-list class="list-horizontal" *ngIf="!user.authenticate; else authenticate">
         <mat-list-item *ngFor="let item of nav">
             <a mat-button routerLink="{{item.path}}">
                 <span>{{item.title}}</span>
@@ -15,8 +15,10 @@
             </a>
         </mat-list-item>
     </mat-list>
-    <button mat-button *ngIf="user && user.authenticate">
-      <span>Вийти</span>
-      <mat-icon>exit_to_app</mat-icon>
-    </button>
+    <ng-template #authenticate>
+      <button mat-button>
+        <span>Вийти</span>
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </ng-template>
 </mat-toolbar>

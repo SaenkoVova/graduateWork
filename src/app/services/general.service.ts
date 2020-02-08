@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {ErrorMessage} from '../models/error';
+import {Processing} from '../models/processing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
 
-  processing = false;
-  error = null;
+  error: ErrorMessage = {
+    message: null
+  };
 
   constructor() { }
 
-  setProcessing() {
-    this.processing = true;
+  getError() {
+    return of(this.error);
   }
+
   setError(error) {
-    this.error = error;
+    this.error.message = error;
   }
   cleanError() {
-    this.error = null;
+    this.error.message = null;
   }
+
 }

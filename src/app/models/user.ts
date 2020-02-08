@@ -1,4 +1,4 @@
 export class User {
-  authenticate: boolean;
-  uid: string;
+   authenticate: boolean;
+   uid: string;
 }

@@ -30,7 +30,7 @@ import { SignupComponent } from './signup/signup.component';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
