@@ -1,0 +1,13 @@
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let item of items">
+    <div class="slide">
+     <div class="slide-mask">
+       <h1>{{item.title}}</h1>
+       <hr>
+       <article>
+         {{item.text}}
+       </article>
+     </div>
+     </div>
+  </ng-template>
+</owl-carousel-o>

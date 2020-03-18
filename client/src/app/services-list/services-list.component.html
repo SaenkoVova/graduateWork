@@ -1,0 +1,17 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Послуги</h1>
+  <mat-grid-list cols="4" rowHeight="150px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+         <mat-icon class="icon">{{card.icon}}</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,28 @@
+<div class="grid-container">
+  <div class="section-header">
+    <h1 class="mat-h1">Фонди</h1>
+  </div>
+  <mat-grid-list cols="3" rowHeight="200px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <p>Кількість справ 100</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary">
+            <mat-icon>remove_red_eye</mat-icon>
+            <span>Переглянути</span>
+          </button>
+          <button mat-mini-fab color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
