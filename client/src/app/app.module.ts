@@ -20,7 +20,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { FondsComponent } from './fonds/fonds.component';
 import { FondsListComponent } from './fonds-list/fonds-list.component';
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FondDetailsComponent } from './fond-details/fond-details.component';
+import { CasesTableComponent } from './cases-table/cases-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {NgProgressModule} from 'ngx-progressbar';
+import {FondsService} from './services/fonds.service';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,7 +37,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     HomeComponent,
     ServicesListComponent,
     FondsComponent,
-    FondsListComponent
+    FondsListComponent,
+    FondDetailsComponent,
+    CasesTableComponent
   ],
     imports: [
         BrowserModule,
@@ -46,9 +55,13 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         MatGridListModule,
         MatCardModule,
         MatMenuModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatTableModule,
+        MatSortModule,
+        NgProgressModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [FondsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

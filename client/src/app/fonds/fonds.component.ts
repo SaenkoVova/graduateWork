@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FondsService} from '../services/fonds.service';
+import {NgProgressService} from '../services/ng-progress.service';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-fonds',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FondsComponent implements OnInit {
 
-  constructor() { }
+  fonds = [];
+  length;
+  pageSize = 10;
+  pageIndex = 0;
+  pageEvent: PageEvent;
+
+  constructor(
+    private fondsService: FondsService,
+    private ngProgressService: NgProgressService
+  ) { }
 
   ngOnInit(): void {
+    this.getFonds(this.pageSize, this.pageIndex);
+  }
+
+  getFonds(pageSize, pageIndex) {
+    this.ngProgressService.ngProgressComplete();
+    this.ngProgressService.ngProgressStart();
+    this.fondsService.getFonds(pageSize, pageIndex)
+      .subscribe(data => {
+        this.fonds = data.array;
+        console.log(this.fonds);
+        this.length = data.length;
+        this.ngProgressService.ngProgressComplete();
+      });
+  }
+  togglePage(event): PageEvent {
+    this.getFonds(event.pageSize, event.pageIndex);
+    return;
   }
 
 }

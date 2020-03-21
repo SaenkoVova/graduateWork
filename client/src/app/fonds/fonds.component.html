@@ -1,5 +1,9 @@
-<app-fonds-list></app-fonds-list>
-<mat-paginator [length]="100"
-               [pageSize]="10"
-               [pageSizeOptions]="[5, 10, 25, 100]">
+<div *ngIf="fonds.length > 0">
+  <app-fonds-list [fonds]="fonds"></app-fonds-list>
+</div>
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageIndex]="pageIndex"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="pageEvent = togglePage($event)">
 </mat-paginator>
