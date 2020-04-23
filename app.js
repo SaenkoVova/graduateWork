@@ -2,8 +2,9 @@ const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const LoadRoute = require('./routes/load.route');
-
+const AuthRoute = require('./routes/auth.route');
 
 const app = express();
 app.use(cors());
@@ -11,7 +12,16 @@ app.use(express.json({ extended: true }));
 
 app.use('/api/load', LoadRoute);
 
+app.use('/api/auth', AuthRoute);
+
 const PORT = config.get('port') || 5000;
+
+if(process.env.NODE_ENV === 'production') {
+    app.use('/', express.static(path.join(__dirname, 'client', 'dist', 'client')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'client', 'index.html'));
+    })
+}
 
 async function start() {
     try {

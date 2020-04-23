@@ -17,7 +17,6 @@ export class FondsListComponent implements OnInit {
       if (matches) {
         return this.fonds;
       }
-      console.log(this.fonds)
       return this.fonds;
     })
   );

@@ -27,7 +27,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {NgProgressModule} from 'ngx-progressbar';
 import {FondsService} from './services/fonds.service';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
+import { CaseViewComponent } from './case-view/case-view.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AuthComponent } from './auth/auth.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import { ShowAuthedDirective } from './directives/show-authed.directive';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +49,12 @@ import {HttpClientModule} from "@angular/common/http";
     FondsComponent,
     FondsListComponent,
     FondDetailsComponent,
-    CasesTableComponent
+    CasesTableComponent,
+    CaseViewComponent,
+    AuthComponent,
+    SignupComponent,
+    ShowAuthedDirective,
+    ProfileComponent,
   ],
     imports: [
         BrowserModule,
@@ -59,7 +74,12 @@ import {HttpClientModule} from "@angular/common/http";
         MatTableModule,
         MatSortModule,
         NgProgressModule,
-        HttpClientModule
+        HttpClientModule,
+        PdfViewerModule,
+        MatInputModule,
+        MatSelectModule,
+        MatRadioModule,
+        ReactiveFormsModule
     ],
   providers: [FondsService],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+<section class="profile-section">
+  <mat-card>
+    <span>Особистий кабінет</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-icon-button aria-label="settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-card>
+  <aside>
+    <mat-card class="example-card">
+      <mat-card-content class="mat-card-section">
+        <div>
+          <img src="../../assets/default-user-avatar.png" alt="avatar" width="70" height="70">
+        </div>
+        <div>
+          <span class="mat-h1">{{currentUser.firstName}} {{currentUser.secondName}}</span>
+          <ul class="user-activity-list">
+            <li></li>
+          </ul>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary">Написати адміністратору</button>
+      </mat-card-actions>
+    </mat-card>
+  </aside>
+</section>

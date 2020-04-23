@@ -9,14 +9,15 @@ export interface CasesTableItem {
   case_index: number;
   id: number;
   title: string;
-  dates: string;
+  startDate: string;
+  endDate: string;
   page_quantity: number;
   notes: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: CasesTableItem[] = [
-  {id: 1, case_index: 1, title: 'Опис 1', dates: '1999-2000', page_quantity: 100, notes: 'Примітки'}
+  // {id: 1, case_index: 1, title: 'Опис 1', dates: '1999-2000', page_quantity: 100, notes: 'Примітки'}
 ];
 
 /**
@@ -25,12 +26,13 @@ const EXAMPLE_DATA: CasesTableItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class CasesTableDataSource extends DataSource<CasesTableItem> {
-  data: CasesTableItem[] = EXAMPLE_DATA;
+  data: CasesTableItem[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(private cases) {
     super();
+    this.data = cases;
   }
 
   /**

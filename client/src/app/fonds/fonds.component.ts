@@ -31,12 +31,12 @@ export class FondsComponent implements OnInit {
     this.fondsService.getFonds(pageSize, pageIndex)
       .subscribe(data => {
         this.fonds = data.array;
-        console.log(this.fonds);
         this.length = data.length;
         this.ngProgressService.ngProgressComplete();
       });
   }
   togglePage(event): PageEvent {
+    this.fonds = [];
     this.getFonds(event.pageSize, event.pageIndex);
     return;
   }

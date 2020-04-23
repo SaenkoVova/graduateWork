@@ -1,0 +1,72 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Реєстрація</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Ім'я" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              Це поле <strong>обов'язкове</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Прізвище" formControlName="secondName">
+            <mat-error *ngIf="addressForm.controls['secondName'].hasError('required')">
+              Це поле <strong>обов'язкове</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+              Це поле <strong>обов'язкове</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Пароль"  formControlName="password">
+            <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
+              Це поле <strong>обов'язкове</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Підтвердьте пароль"  formControlName="confirm">
+            <mat-error *ngIf="addressForm.controls['confirm'].hasError('required')">
+              Це поле <strong>обов'язкове</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="error">
+        <div class="col">
+          <div class="mat-error">
+            {{error}}
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="
+      addressForm.controls['confirm'].hasError('required') ||
+      addressForm.controls['email'].hasError('required') ||
+      addressForm.controls['password'].hasError('required') ||
+      isSubmit"
+      >Зареєструватися</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

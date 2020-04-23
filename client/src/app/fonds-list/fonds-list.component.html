@@ -2,8 +2,8 @@
   <div class="section-header">
     <h1 class="mat-h1">Фонди</h1>
   </div>
-  <mat-grid-list cols="3" rowHeight="200px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="1" [rowspan]="1">
+  <mat-grid-list cols="3" rowHeight="140px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="1" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
@@ -11,7 +11,9 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <p>Кількість справ 100</p>
+          <p>Номер фонду: {{card.fondNumber}}</p>
+          <p>Кількість справ: {{card.caseQuantity}}</p>
+          <p>Дати: {{card.startDate | date}}  - {{card.endDate | date}}</p>
         </mat-card-content>
         <mat-card-actions>
           <button [routerLink]="card._id" mat-flat-button color="primary">
