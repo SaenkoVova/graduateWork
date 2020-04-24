@@ -6,4 +6,5 @@ export interface User {
   image: string;
   firstName: string;
   secondName: string;
+  connectionDate: string;
 }

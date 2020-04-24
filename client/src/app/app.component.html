@@ -2,5 +2,9 @@
              [thick]="true"
              [trickleSpeed]="500"
              [spinner]="false"></ng-progress>
-<app-nav></app-nav>
+<app-nav *ngIf="currentRoute !== '/admin' && currentRoute !== '/admin/dashboard'; else next"></app-nav>
 
+
+<ng-template #next>
+  <router-outlet></router-outlet>
+</ng-template>

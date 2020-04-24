@@ -7,7 +7,10 @@ import {CaseViewComponent} from './case-view/case-view.component';
 import {AuthComponent} from './auth/auth.component';
 import {SignupComponent} from './signup/signup.component';
 import {ProfileComponent} from './profile/profile.component';
-
+import {AdminComponent} from './admin/admin.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {AdminGuardGuard} from './guards/admin-guard.guard';
+import {AuthAdminGuard} from "./guards/auth-admin.guard";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -16,7 +19,9 @@ const routes: Routes = [
   { path: 'fonds/:id/case/:caseId', component: CaseViewComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'signup', component: SignupComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'admin' , component: AdminComponent, canActivate: [AuthAdminGuard] },
+  { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AdminGuardGuard] }
 ];
 
 @NgModule({

@@ -53,6 +53,7 @@ export class NavComponent implements OnInit {
   getCurrentUser() {
     this.auth.currentUser.subscribe(
       (userData) => {
+        console.log(userData);
         this.currentUser = userData;
       }
     );

@@ -5,9 +5,10 @@ const schema = new Schema({
     caseIndex: { type: Number, required: true },
     caseTitle: { type: String, required: true },
     startDate: { type: Date, required: true },
-    endDate: { type: Date, required: true, default: Date.now() },
+    endDate: { type: Date, required: true, default: Date.now },
     pageQuantity: { type: Number, required: true },
-    notes: { type: String, required: true }
+    notes: { type: String, required: true },
+    owners: [{ type: String}]
 });
 
 module.exports = model('Case', schema);

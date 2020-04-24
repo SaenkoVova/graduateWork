@@ -38,6 +38,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { ShowAuthedDirective } from './directives/show-authed.directive';
 import { ProfileComponent } from './profile/profile.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
+import { MessagesComponent } from './messages/messages.component';
+import { AddFondComponent } from './add-fond/add-fond.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +61,10 @@ import { ProfileComponent } from './profile/profile.component';
     SignupComponent,
     ShowAuthedDirective,
     ProfileComponent,
+    AdminComponent,
+    DashboardComponent,
+    MessagesComponent,
+    AddFondComponent,
   ],
     imports: [
         BrowserModule,
@@ -79,7 +89,9 @@ import { ProfileComponent } from './profile/profile.component';
         MatInputModule,
         MatSelectModule,
         MatRadioModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatTabsModule,
+        ChartsModule
     ],
   providers: [FondsService],
   bootstrap: [AppComponent]

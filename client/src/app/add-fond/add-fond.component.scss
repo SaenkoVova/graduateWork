@@ -1,0 +1,29 @@
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  background: #ffffff;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+}
+input[type=text]{
+  display: block;
+  padding: 10px 15px;
+  margin: 10px 20px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+input[type=button] {
+
+}

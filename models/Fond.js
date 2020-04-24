@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model} = require('mongoose');
 
 const schema = new Schema({
     fondNumber: { type: Number, required: true },
@@ -6,7 +6,8 @@ const schema = new Schema({
     startDate: { type: Date, required: true, default: Date.now() },
     endDate: { type: Date, required: true, default: null },
     caseQuantity: { type: Number, required: true, default: 0 },
-    loginRequired: { type: Boolean, required: true, default: false }
+    loginRequired: { type: Boolean, required: true, default: false },
+    owners: [{type: String }]
 });
 
 module.exports = model('Fond', schema);

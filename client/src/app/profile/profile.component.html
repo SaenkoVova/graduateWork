@@ -14,9 +14,8 @@
         </div>
         <div>
           <span class="mat-h1">{{currentUser.firstName}} {{currentUser.secondName}}</span>
-          <ul class="user-activity-list">
-            <li></li>
-          </ul>
+          <br>
+          <span>Дата приєднання: {{currentUser.connectionDate | date}}</span>
         </div>
       </mat-card-content>
       <mat-card-actions>
@@ -24,4 +23,27 @@
       </mat-card-actions>
     </mat-card>
   </aside>
+  <div class="content">
+    <mat-tab-group>
+      <mat-tab label="Збережені фонди">
+        <mat-selection-list #shoes>
+          <mat-list-option *ngFor="let item of fonds" [routerLink]="'/fonds/' + item._id">
+            Назва фонду: {{item.fondName}} > Роки існування: {{item.startDate | date}} {{ item.endDate | date}}
+            > Кількість справ {{item.caseQuantity}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-tab>
+      <mat-tab label="Збережені справи">
+        <mat-selection-list>
+          <mat-list-option *ngFor="let item of cases" [routerLink]="'/fonds/' + item._id">
+            Заголовок спарви: {{item.caseTitle}}
+          </mat-list-option>
+          <mat-list-option *ngIf="!cases.length">
+            <p>Справ не додано</p>
+          </mat-list-option>
+          </mat-selection-list>
+      </mat-tab>
+      <mat-tab label="Коментарі"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
 </section>

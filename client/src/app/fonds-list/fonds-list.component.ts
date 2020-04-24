@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
+import {JwtService} from "../services/jwt.service";
+import {FondsService} from "../services/fonds.service";
 
 @Component({
   selector: 'app-fonds-list',
@@ -21,9 +23,19 @@ export class FondsListComponent implements OnInit {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private fondsService: FondsService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  addToProfile(fondId) {
+    this.fondsService.addToProfile(fondId)
+      .subscribe((data) => {
+          console.log(data);
+      });
+
+  }
 }

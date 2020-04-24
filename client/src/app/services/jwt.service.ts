@@ -10,7 +10,15 @@ export class JwtService {
   getToken(): string {
     return window.localStorage.jwtToken;
   }
-
+  getAdminToken(): string {
+    return window.localStorage.adminJwtToken;
+  }
+  saveAdminToken(token): string {
+    return window.localStorage.adminJwtToken = token;
+  }
+  destroyAdminToken() {
+    window.localStorage.removeItem('adminJwtToken');
+  }
   saveToken(token: string) {
     window.localStorage.jwtToken = token;
   }

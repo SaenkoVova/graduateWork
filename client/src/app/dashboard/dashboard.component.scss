@@ -1,0 +1,18 @@
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.dashboard-header {
+  background: #34495e;
+  color: #ffffff;
+}
+.chart-wrapper {
+  width: 500px;
+  height: 300px;
+}
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

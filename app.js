@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const LoadRoute = require('./routes/load.route');
 const AuthRoute = require('./routes/auth.route');
+const ProfileRoute = require('./routes/profile.route');
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,8 @@ app.use(express.json({ extended: true }));
 app.use('/api/load', LoadRoute);
 
 app.use('/api/auth', AuthRoute);
+
+app.use('/api/profile', ProfileRoute);
 
 const PORT = config.get('port') || 5000;
 

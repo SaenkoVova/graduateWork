@@ -1,0 +1,51 @@
+<mat-toolbar class="dashboard-header">
+  <span>Архівний відділ</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button mat-button (click)="addFondVisible = !addFondVisible">Додати фонд</button>
+
+  <app-add-fond *ngIf="addFondVisible" (onClose)="addFondVisible = false" ></app-add-fond>
+
+  <button mat-button (click)="logOut()">Вийти</button>
+</mat-toolbar>
+<div class="charts-container">
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"></canvas>
+  </div>
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [datasets]="barChartData1"
+            [labels]="barChartLabels1"
+            [options]="barChartOptions1"
+            [legend]="barChartLegend1"
+            [chartType]="barChartType1"></canvas>
+  </div>
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [datasets]="barChartData2"
+            [labels]="barChartLabels2"
+            [options]="barChartOptions2"
+            [legend]="barChartLegend2"
+            [chartType]="barChartType2"></canvas>
+  </div>
+</div>
+<div>
+  <mat-tab-group>
+    <mat-tab label="Повідомлення">
+      <app-messages></app-messages>
+    </mat-tab>
+    <mat-tab label="Фонди">
+      <app-fonds></app-fonds>
+    </mat-tab>
+    <mat-tab label="Справи">
+      <app-cases-table></app-cases-table>
+    </mat-tab>
+  </mat-tab-group>
+</div>

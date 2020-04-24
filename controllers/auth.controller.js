@@ -11,7 +11,7 @@ exports.getUser = async (req, res) => {
       let decoded = jwt.verify(payload.token, config.get('jwtSecret'));
       if (decoded.userId) {
           const user = await User.findOne({_id: ObjectID(decoded.userId)});
-          await res.json({token: payload.token, userId: user.id, firstName: user.firstName, secondName: user.secondName});
+          await res.json({token: payload.token, userId: user.id, firstName: user.firstName, secondName: user.secondName, connectionDate: user.connectionDate});
       }
   }  catch (e) {
       res.status(500).json({message: "Щось пішло не так, спробуйте знову"});
@@ -75,7 +75,7 @@ exports.signIn = async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        await res.json({token, userId: user.id});
+        await res.json({token, userId: user.id, firstName: user.firstName, secondName: user.secondName, connectionDate: user.connectionDate});
     }
     catch (e) {
         res.send(500).json({message: 'Щось пішло не так, спробуйте знову'});
