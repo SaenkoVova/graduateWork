@@ -7,7 +7,6 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/fonds']" [class.night]="nightMode">Фонди</a>
       <a mat-list-item href="#" [class.night]="nightMode">Форум</a>
-      <a mat-list-item href="#" [class.night]="nightMode">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content [class.night]="nightMode">
@@ -24,7 +23,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span [routerLink]="['/']">
-        Архів міста Нетішин
+        Архівний відділ
       </span>
       <span class="fill-remaining-space"></span>
       <div *appShowAuthed="false">
@@ -48,8 +47,6 @@
       </div>
       <div *appShowAuthed="true">
         <button [routerLink]="'/profile'" mat-flat-button color="primary">
-<!--          <mat-icon>account_circle</mat-icon>-->
-<!--          <span>Особистий кабінет</span>-->
           <img src="../../assets/default-user-avatar.png" height="40" width="40" class="user-avatar" alt="avatar">
           <span>{{currentUser.firstName}} {{currentUser.secondName}}</span>
         </button>
