@@ -8,7 +8,7 @@ router.post(
     [
         check('email', 'Некоректний email').isEmail(),
         check('password', 'Мінімальна довжина пароля 6 символів')
-            .isLength({ min: 6 })
+            .isLength({ min: 5 })
     ],
     AuthController.signUp);
 
@@ -17,7 +17,7 @@ router.post(
     [
         check('email', 'Некоректний email').isEmail(),
         check('password', 'Мінімальна довжина пароля 8 символів')
-            .isLength({ min: 6 })
+            .isLength({ min: 5 })
     ],
     AuthController.signIn);
 
