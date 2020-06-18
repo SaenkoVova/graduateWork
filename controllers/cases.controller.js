@@ -10,7 +10,6 @@ exports.getCases = async (req, res) => {
     else {
         cases = await Case.find().skip(pageIndex * pageSize).limit(pageSize);
     }
-    console.log(cases);
     res.status(200).json({
         length: casesQuantity,
         array: cases

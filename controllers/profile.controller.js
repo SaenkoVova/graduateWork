@@ -1,12 +1,17 @@
 const Fond = require('../models/Fond');
 const Case = require('../models/Case');
+const User = require('../models/User');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 exports.getProfileData = async (req, res) => {
     try {
-        const fonds = await Fond.find({owners: req.user.userId});
-        const cases = await  Case.find({owners: req.user.userId});
-        res.json({fonds, cases});
+        const user = await User.find({_id: ObjectID(req.user.userId)});
+        const fonds = await Fond.find({
+            _id: {$in: user[0].bookmarks}
+        });
+        res.status(200).json({
+            fonds
+        })
     } catch (e) {
         res.status(500).json({message: "Something wrong"});
     }
@@ -16,13 +21,12 @@ exports.getProfileData = async (req, res) => {
 exports.addToProfile = async (req, res) => {
     try {
         const { fondId } = req.body;
-        Fond.findOneAndUpdate(
-            {_id: ObjectID(fondId)},
-            { $push: { owners: req.user.userId}}
+        await User.findOneAndUpdate(
+            {_id: ObjectID(req.user.userId)},
+            { $addToSet: { bookmarks: fondId}}
         );
-        res.status(200);
+        res.status(200).json({message: "Додано до закладинок"});
     } catch (e) {
-        console.log(e);
         res.status(500).json({message: "Something wrong"});
     }
 };

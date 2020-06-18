@@ -35,16 +35,21 @@ exports.signUp = async (req, res) => {
             return res.status(400).json({ message: 'Користувач уже існує' });
         }
         const hashedPassword = await bcrypt.hash(password, 12);
-        const user = new User({firstName, secondName, email, password: hashedPassword });
+        const user = new User({firstName, secondName, email, password: hashedPassword, bookmarks: [] });
         await user.save();
         const token = jwt.sign(
             { userId: user.id },
             config.get('jwtSecret'),
             {expiresIn: '1h'}
         );
-        res.status(200).json({token, userId: user.id});
+        await res.json({token,
+            userId: user.id,
+            firstName: user.firstName,
+            secondName: user.secondName,
+            connectionDate: user.connectionDate});
     }
     catch (e) {
+        console.log(e)
         res.status(500).json({message: 'Щось пішло не так, спробуйте знову'});
     }
 };
@@ -75,7 +80,11 @@ exports.signIn = async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        await res.json({token, userId: user.id, firstName: user.firstName, secondName: user.secondName, connectionDate: user.connectionDate});
+        await res.json({token,
+            userId: user.id,
+            firstName: user.firstName,
+            secondName: user.secondName,
+            connectionDate: user.connectionDate});
     }
     catch (e) {
         res.send(500).json({message: 'Щось пішло не так, спробуйте знову'});

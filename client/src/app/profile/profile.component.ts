@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getProfileData()
       .subscribe((data) => {
         this.fonds = data.fonds;
-        this.cases = data.cases;
+        console.log(this.fonds)
       });
 
   }

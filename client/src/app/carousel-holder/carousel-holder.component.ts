@@ -10,12 +10,16 @@ export class CarouselHolderComponent implements OnInit {
 
   items = [
     {
-      title: 'Title 1',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat mauris nunc congue nisi vitae suscipit tellus mauris a.'
+      title: 'ЧЕРГОВЕ ПОПОВНЕННЯ БАЗИ ДАНИХ «ОЦИФРОВАНІ ОПИСИ СПРАВ МІСЬКОГО АРХІВУ ПЕРІОДУ ПІСЛЯ 1917 РОКУ»',
+      text: 'Для надання доступу до довідкового апарату архіву у віддаленому режимі на сайті Державного архіву Київської області' +
+      'додатково опубліковано цифрові копії описів справ 131 фонду установ і організацій 1920-1930-х років та періоду нацистської' +
+      'окупації України. До уваги користувачів – описи архівних справ Управління Південно-Західної залізниці, сільськогосподарських' + 
+      'об’єднань 1920-1930 рр., а також органів місцевої влади на Київщині 1941-1943 рр. Серед останніх – гебітскомісаріати міст Умані' +
+      'і Таращі, управи Бориспільського і Рокитнянського районів Київської області, м. Таращі і численні сільські управи та громадські господарства Київщини.'
     },
     {
-      title: 'Title 2',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat mauris nunc congue nisi vitae suscipit tellus mauris a.'
+      title: 'ОСОБОВІ СПРАВИ ЕМІГРАНТІВ 20-30-Х РОКІВ МИНУЛОГО СТОЛІТТЯ ОНЛАЙН НА САЙТІ МІСЬКОГО АРХІВУ',
+      text: 'До розділу «Е-Архів» на веб-сайті Державного архіву Київської області внесені цифрові копії 1476 архівних справ фонду № Р-3066 – Київське відділення Російсько-канадсько-американського пасажирського агентства (1926-1930 рр.).'
     }
   ];
 
@@ -28,17 +32,17 @@ export class CarouselHolderComponent implements OnInit {
     pullDrag: false,
     dots: true,
     autoplay: true,
-    navSpeed: 700,
-    navText: ['', ''],
+    navSpeed: 500,
+    navText: ['<', '>'],
     responsive: {
       0: {
         items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
-        items: 3
+        items: 1
       },
       1080: {
         items: 1

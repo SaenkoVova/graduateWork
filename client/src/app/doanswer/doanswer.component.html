@@ -1,0 +1,11 @@
+
+<div class="modal">
+    <div class="dialog">
+      <textarea rows="12" cols="12" [(ngModel)]="answer"></textarea>
+      <div>
+        <button mat-flat-button color="primary" (click)="onClose.emit()" style="margin: 2px">Відмінити</button>
+        <button mat-flat-button color="primary" style="margin: 2px" (click)="doAnswer()">Відповісти</button>
+      </div>
+    </div>
+  </div>
+  

@@ -34,7 +34,7 @@ import { AuthComponent } from './auth/auth.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { ShowAuthedDirective } from './directives/show-authed.directive';
 import { ProfileComponent } from './profile/profile.component';
@@ -44,6 +44,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { MessagesComponent } from './messages/messages.component';
 import { AddFondComponent } from './add-fond/add-fond.component';
+import { ForumComponent } from './forum/forum.component';
+import { ReviewComponent } from './review/review.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import {MatStepperModule} from "@angular/material/stepper";
+import { DoanswerComponent } from './doanswer/doanswer.component';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +71,9 @@ import { AddFondComponent } from './add-fond/add-fond.component';
     DashboardComponent,
     MessagesComponent,
     AddFondComponent,
+    ForumComponent,
+    ReviewComponent,
+    DoanswerComponent,
   ],
     imports: [
         BrowserModule,
@@ -91,7 +100,10 @@ import { AddFondComponent } from './add-fond/add-fond.component';
         MatRadioModule,
         ReactiveFormsModule,
         MatTabsModule,
-        ChartsModule
+        ChartsModule,
+        MatSnackBarModule,
+        MatStepperModule,
+        FormsModule
     ],
   providers: [FondsService],
   bootstrap: [AppComponent]

@@ -1,18 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  id: number;
-  name: string;
-  secondName: string;
-  message: string;
-  read: boolean;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, name: 'Володимир', secondName: 'Саєнко', message: 'This is a simple message', read: false},
-  {id: 2, name: 'User', secondName: 'Test', message: 'This is a simple test message', read: true},
-
-];
+import { ForumService } from '../services/forum.service';
 
 @Component({
   selector: 'app-messages',
@@ -20,11 +7,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'secondName', 'message', 'read'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+  displayedColumns: string[] = ['firstName', 'secondName', 'title', 'status'];
+  dataSource = null;
+  doAnswerVisible = false
+  constructor(
+    private forumService: ForumService,
+  ) { }
 
   ngOnInit(): void {
+    this.forumService.getTopics()
+      .subscribe((res) => {
+        this.dataSource = res.topics;
+        console.log(res.topics)
+      })
+  }
+
+  doAnswer(id) {
+    this.doAnswerVisible = !this.doAnswerVisible;
+    window.localStorage.removeItem('RequestId');
+    window.localStorage.setItem('RequestId', JSON.stringify(id));
   }
 
 }

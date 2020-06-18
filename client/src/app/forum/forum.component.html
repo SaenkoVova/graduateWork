@@ -1,0 +1,43 @@
+<main>
+    <div>
+        <h1>Запитання / Відповідь</h1>
+    </div>
+    <div>
+      <button  mat-flat-button color="primary" (click)="toggleStepperVisible()">Задати питання</button>
+    </div>
+    <div>
+      <mat-horizontal-stepper *ngIf="stepperVisible" [linear]="true" #stepper>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Напишіть ваше запитання</ng-template>
+            <mat-form-field>
+              <mat-label>Текст запитання</mat-label>
+              <input matInput formControlName="secondCtrl"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Далі</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Готово</ng-template>
+          <p>Все вірно?</p>
+          <div>
+            <button mat-button matStepperPrevious>Повернутися</button>
+            <button mat-button (click)="stepper.reset()">Скинути</button>
+            <button mat-button (click)="doQuestion()">Задати питання</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+    <ol class="gradient-list">
+      <li *ngFor="let item of topics">
+        <h1 routerLink="/forum/topic/{{item._id}}" routerLinkActive="router-link-active">{{item.title}}</h1>
+        <span class="cell"><span class="cell-title">Кількість повідомлень:</span> {{item.messagesQuantity}}</span>
+        <span class="cell"><span class="cell-title">Кількість переглядів:</span> {{item.views}}</span>
+        <span [routerLink]="['/']" routerLinkActive="router-link-active"  class="cell"><span class="cell-title">Автор:</span> {{item.author.firstName}} {{item.author.secondName}}</span>
+        <span class="cell"><span class="cell-title">Остання відповідь:</span> {{item.lastAnswer | date: 'short'}}</span>
+      </li>
+    </ol>
+  </main>

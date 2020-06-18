@@ -6,8 +6,7 @@ const schema = new Schema({
     startDate: { type: Date, required: true, default: Date.now() },
     endDate: { type: Date, required: true, default: null },
     caseQuantity: { type: Number, required: true, default: 0 },
-    loginRequired: { type: Boolean, required: true, default: false },
-    owners: [{type: String }]
+    loginRequired: { type: Boolean, required: true, default: false }
 });
 
 module.exports = model('Fond', schema);

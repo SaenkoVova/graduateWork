@@ -1,0 +1,12 @@
+<main>
+    <div>
+        <h1>Запитання / Відповідь</h1>
+    </div>
+    <ol class="gradient-list">
+      <li *ngFor="let item of reviews">
+        <article>
+            {{item.answer}}
+        </article>
+      </li>
+    </ol>
+  </main>

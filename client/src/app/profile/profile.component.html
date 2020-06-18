@@ -38,7 +38,7 @@
           <mat-list-option *ngFor="let item of cases" [routerLink]="'/fonds/' + item._id">
             Заголовок спарви: {{item.caseTitle}}
           </mat-list-option>
-          <mat-list-option *ngIf="!cases.length">
+          <mat-list-option *ngIf="cases.length == 0">
             <p>Справ не додано</p>
           </mat-list-option>
           </mat-selection-list>

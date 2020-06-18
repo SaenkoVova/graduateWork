@@ -4,7 +4,6 @@ exports.getFonds = async (req, res) => {
     let fonds = [];
     const fondsQuantity = await Fond.countDocuments();
     const { pageSize, pageIndex } = req.body;
-    console.log(pageSize, pageIndex)
     if (pageIndex === 0) {
         fonds = await Fond.find().limit(pageSize);
     }

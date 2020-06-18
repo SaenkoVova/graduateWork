@@ -5,8 +5,22 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar [class.night]="nightMode">Навігація</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/fonds']" [class.night]="nightMode">Фонди</a>
-      <a mat-list-item href="#" [class.night]="nightMode">Форум</a>
+      <a mat-list-item [routerLink]="['/']" [class.night]="nightMode">
+        <mat-icon>home</mat-icon>
+        <span>Головна</span>
+      </a>
+      <a mat-list-item [routerLink]="['/fonds']" [class.night]="nightMode">
+        <mat-icon>list</mat-icon>
+        <span>Фонди</span>
+      </a>
+      <a mat-list-item [routerLink]="['/forum']" routerLinkActive="router-link-active"  [class.night]="nightMode">
+        <mat-icon>question_answer</mat-icon>
+        <span>Форум</span>
+      </a>
+      <a mat-list-item [routerLink]="['/forum']" routerLinkActive="router-link-active"  [class.night]="nightMode">
+        <mat-icon>support_agent</mat-icon>
+        <span>Підтримка</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content [class.night]="nightMode">

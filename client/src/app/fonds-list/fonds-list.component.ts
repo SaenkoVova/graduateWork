@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
-import {JwtService} from "../services/jwt.service";
 import {FondsService} from "../services/fonds.service";
+import { AuthService } from '../services/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-fonds-list',
@@ -12,6 +13,8 @@ import {FondsService} from "../services/fonds.service";
 export class FondsListComponent implements OnInit {
 
   @Input() fonds = [];
+
+  dialogVisible = false
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -25,17 +28,42 @@ export class FondsListComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private fondsService: FondsService
+    private fondsService: FondsService,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
   }
 
   addToProfile(fondId) {
-    this.fondsService.addToProfile(fondId)
-      .subscribe((data) => {
-          console.log(data);
-      });
 
+    this.authService.currentUser.subscribe((data) => {
+      if(this.isEmpty(data)) {
+        this.dialogVisible = true;
+      }
+      else {
+        this.fondsService.addToProfile(fondId)
+          .subscribe((res) => {
+            console.log(res);
+            this.openSnackBar(res.message, 'ок');
+          })
+      }
+    })
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+  closeDialog() {
+    this.dialogVisible = false;
+  }
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
   }
 }
