@@ -45,7 +45,6 @@ export class FondsListComponent implements OnInit {
       else {
         this.fondsService.addToProfile(fondId)
           .subscribe((res) => {
-            console.log(res);
             this.openSnackBar(res.message, 'ок');
           })
       }

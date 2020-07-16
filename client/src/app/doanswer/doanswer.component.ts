@@ -24,7 +24,7 @@ export class DoanswerComponent implements OnInit {
   doAnswer() {
     this.forumService.doAnswer(JSON.parse(window.localStorage.getItem('RequestId')), this.answer)
       .subscribe((data) => {
-        console.log(data)
+        this.onClose.emit();
       })
   }
 

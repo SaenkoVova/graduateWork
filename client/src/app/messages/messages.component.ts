@@ -18,7 +18,6 @@ export class MessagesComponent implements OnInit {
     this.forumService.getTopics()
       .subscribe((res) => {
         this.dataSource = res.topics;
-        console.log(res.topics)
       })
   }
 
@@ -26,6 +25,13 @@ export class MessagesComponent implements OnInit {
     this.doAnswerVisible = !this.doAnswerVisible;
     window.localStorage.removeItem('RequestId');
     window.localStorage.setItem('RequestId', JSON.stringify(id));
+  }
+  getTopics() {
+    this.doAnswerVisible = false;
+    this.forumService.getTopics()
+      .subscribe((res) => {
+        this.dataSource = res.topics;
+      })
   }
 
 }

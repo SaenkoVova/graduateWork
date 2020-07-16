@@ -36,4 +36,19 @@ export class FondsService {
       httpOptions
     );
   }
+
+  addFond(fond) {
+    const adminToken = window.localStorage.getItem('adminJwtToken');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${adminToken}`
+      })
+    };
+    return this.http.post<any>(
+      '/api/admin/addFond',
+      fond,
+      httpOptions
+    );
+  }
 }

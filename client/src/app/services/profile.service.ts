@@ -17,6 +17,7 @@ export class ProfileService {
       return this.http.get<any>('/api/profile', {headers: new HttpHeaders({
           'Content-type': 'application/json',
           Authorization: `Bearer ${this.jwtService.getToken()}`
-        }) });
+        })
+      });
     }
   }

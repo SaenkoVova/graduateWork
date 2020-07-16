@@ -1,5 +1,5 @@
 <mat-toolbar class="dashboard-header">
-  <span>Архівний відділ</span>
+  <span [routerLink]="['/']" routerLinkActive="router-link-active" style="cursor: pointer;" >Архівний відділ</span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
@@ -40,12 +40,6 @@
   <mat-tab-group>
     <mat-tab label="Повідомлення">
       <app-messages></app-messages>
-    </mat-tab>
-    <mat-tab label="Фонди">
-      <app-fonds></app-fonds>
-    </mat-tab>
-    <mat-tab label="Справи">
-      <app-cases-table></app-cases-table>
     </mat-tab>
   </mat-tab-group>
 </div>

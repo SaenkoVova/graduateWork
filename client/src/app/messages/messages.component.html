@@ -1,4 +1,4 @@
-<app-doanswer *ngIf="doAnswerVisible" (onClose)="doAnswerVisible = false"></app-doanswer>
+<app-doanswer *ngIf="doAnswerVisible" (onClose)="getTopics()"></app-doanswer>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -28,7 +28,7 @@
     <th mat-header-cell *matHeaderCellDef> Статус </th>
     <td mat-cell *matCellDef="let element">
       <button mat-flat-button color="primary" *ngIf="element.messagesQuantity === 0" (click)="doAnswer(element._id)">Відповісти</button>
-      <button mat-flat-button color="accent" *ngIf="element.messagesQuantity !== 0">Змінити відповідь</button>
+      <button mat-flat-button color="accent" *ngIf="element.messagesQuantity !== 0">Переглянуто</button>
       <span *ngIf="element.messagesQuantity.length">Переглянуто</span>
     </td>
   </ng-container>

@@ -2,9 +2,6 @@
   <mat-card>
     <span>Особистий кабінет</span>
     <span class="fill-remaining-space"></span>
-    <button mat-icon-button aria-label="settings">
-      <mat-icon>settings</mat-icon>
-    </button>
   </mat-card>
   <aside>
     <mat-card class="example-card">
@@ -18,9 +15,7 @@
           <span>Дата приєднання: {{currentUser.connectionDate | date}}</span>
         </div>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button color="primary">Написати адміністратору</button>
-      </mat-card-actions>
+      
     </mat-card>
   </aside>
   <div class="content">
@@ -43,7 +38,13 @@
           </mat-list-option>
           </mat-selection-list>
       </mat-tab>
-      <mat-tab label="Коментарі"> Content 3 </mat-tab>
+      <mat-tab label="Коментарі">
+        <mat-selection-list #shoes>
+          <mat-list-option *ngFor="let item of reviews">
+              <span routerLink="/forum/topic/{{item._id}}" routerLinkActive="router-link-active">{{item.title}}</span>
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </section>

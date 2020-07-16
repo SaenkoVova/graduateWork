@@ -8,7 +8,7 @@ const schema = new Schema({
     endDate: { type: Date, required: true, default: Date.now },
     pageQuantity: { type: Number, required: true },
     notes: { type: String, required: true },
-    owners: [{ type: String}]
+    fondId: { type: String, required: true}
 });
 
 module.exports = model('Case', schema);

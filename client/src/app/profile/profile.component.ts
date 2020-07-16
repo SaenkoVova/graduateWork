@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   fonds = [];
   cases = [];
+  reviews = [];
 
   constructor(
     private auth: AuthService,
@@ -25,7 +26,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getProfileData()
       .subscribe((data) => {
         this.fonds = data.fonds;
-        console.log(this.fonds)
+        this.reviews = data.topics;
       });
 
   }

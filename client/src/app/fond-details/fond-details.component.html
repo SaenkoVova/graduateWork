@@ -1,6 +1,6 @@
 <div class="grid-container">
   <div class="section-header">
-    <h1 class="mat-h1">Фонд</h1>
+    <h1 class="mat-h1">Фонд {{fondName}}</h1>
   </div>
-  <app-cases-table></app-cases-table>
+  <app-cases-table (passFondTitle)="setTitle($event)"></app-cases-table>
 </div>

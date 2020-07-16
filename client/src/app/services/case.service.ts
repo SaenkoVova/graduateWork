@@ -11,13 +11,13 @@ export class CaseService {
     private http: HttpClient
   ) { }
 
-  getCases(pageSize, pageIndex): Observable<any> {
+  getCases(pageSize, pageIndex, fondId): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    const req = {pageSize, pageIndex};
+    const req = {pageSize, pageIndex, fondId};
     return this.http.post<any>('/api/load/cases', req, httpOptions);
   }
 }

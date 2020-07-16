@@ -9,29 +9,13 @@ import {map} from 'rxjs/operators';
 })
 export class FondDetailsComponent implements OnInit {
 
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Комунальне господарство', cols: 1, rows: 1, icon: 'playlist_add_check' },
-          { title: 'Міський ліцей', cols: 1, rows: 1, icon: 'restore' },
-          { title: 'Міська рада', cols: 1, rows: 1, icon: 'people' },
-          { title: 'Школа №1', cols: 1, rows: 1, icon: 'backup' }
-        ];
-      }
+  fondName = null;
 
-      return [
-        { id: 1, title: 'Комунальне господарство', cols: 1, rows: 1 },
-        { id: 2, title: 'Міський ліцей', cols: 1, rows: 1 },
-        { id: 3, title: 'Міська рада', cols: 1, rows: 1 },
-        { id: 4, title: 'Школа №1', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
+  setTitle(event) {
+    this.fondName = event
+  }
 }

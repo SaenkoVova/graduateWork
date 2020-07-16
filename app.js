@@ -7,6 +7,7 @@ const LoadRoute = require('./routes/load.route');
 const AuthRoute = require('./routes/auth.route');
 const ProfileRoute = require('./routes/profile.route');
 const ForumRoute = require('./routes/forum.route');
+const AdminRoute = require('./routes/admin.route');
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,8 @@ app.use('/api/auth', AuthRoute);
 app.use('/api/profile', ProfileRoute);
 
 app.use('/api/forum', ForumRoute);
+
+app.use('/api/admin', AdminRoute);
 
 const PORT = config.get('port') || 5000;
 
